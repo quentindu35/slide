@@ -1,0 +1,30 @@
+{% extends 'header.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<div>
+    <h2>Formulaire d'inscription</h2>
+    <form action="/inscription/insert" method="post">
+        <div>
+            <label for="nom">Nom :*</label>
+            <input type="text" id="nom" name="nom" required>
+        </div>
+        <div>
+            <label for="prenom">Prenom :*</label>
+            <input type="text" id="prenom" name="prenom" required>
+        </div>
+        <div>
+            <label for="mail">E-mail :*</label>
+            <input type="email" id="mail" name="user_mail" required>
+        </div>
+        <div>
+            <label for="mdp">Mot de passe :*</label>
+            <input type="password" id="mdp" name="mdp" required>
+        </div>
+        <label>* Les champs sont obligatoires</label>
+        <br>
+        <button type="submit">Inscription</button>
+    </form>
+</div>
+{% endblock %}

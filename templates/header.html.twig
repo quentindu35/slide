@@ -2,10 +2,18 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name= "language" content= "fr-FR" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        <ul id="nav">
+            <li id="nav-home"><a href="/">Accueil</a></li>
+            <li id="nav-contact"><a href="/contact">Contact</a></li>
+            <li id="nav-about"><a href="/a-propos">A propos</a></li>
+            <li id="nav-connexion"><a href="/connexion">Connexion</a></li>
+        </ul>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

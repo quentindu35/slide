@@ -2,6 +2,22 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
-index:
+Accueil:
     path: /
     controller: App\Controller\AccueilController::index
+
+Apropos:
+    path: /a-propos
+    controller: App\Controller\AproposController::index
+
+Contact:
+    path: /contact
+    controller: App\Controller\ContactController::index
+
+Connexion:
+    path: /connexion
+    controller: App\Controller\ConnexionController::index
+
+Inscription:
+    path: /inscription
+    controller: App\Controller\InscriptionController::index
