@@ -2,8 +2,26 @@
 
 {% block title %} Welcome !{% endblock %}
 {% block body %}
-
-<div class="example-wrapper" id="app">
-    <app></app>
+ <div class="col-lg-6 col-md-12">
+    <div id="carousel-v" class="carousel slide mt-3 mb-2" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {% for slide in slides %}
+                <li data-target="#carousel-v" data-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %} class="active" {% endif %}></li>
+            {% endfor %}
+        </ol>
+    <div class="carousel-inner">
+        {% for slide in slides %}
+            <div class="carousel-item {% if loop.index0 == 0 %} active {% endif %}">
+                <iframe src="{{ slide.image }}" allowfullscreen></iframe>
+            </div>
+        {% endfor %}
+    </div>
+        <a class="carousel-control-prev" href="#carousel-v" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-v" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
 </div>
 {% endblock %}

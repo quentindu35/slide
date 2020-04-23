@@ -19,7 +19,7 @@ class Slide
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\presentation", inversedBy="slides")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Presentation", inversedBy="slides")
      */
     private $presentation;
 
