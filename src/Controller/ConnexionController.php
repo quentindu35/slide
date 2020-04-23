@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Utilisateur;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -20,11 +22,13 @@ class ConnexionController extends AbstractController
     /**
      * @Route("/connexion/log", name="connexion-log")
      */
-    public function log()
+    public function log(EntityManagerInterface $em)
     {
+        $utilisateur = $em->getRepository(Utilisateur::class)->findUtilisateurConnexion($_POST['user_mail'], $_POST['mdp']);
         $data = [
             'email' => $_POST['user_mail'],
             'mdp' => $_POST['mdp'],
         ];
+        echo "<pre>"; var_dump($utilisateur); die();
     }
 }
