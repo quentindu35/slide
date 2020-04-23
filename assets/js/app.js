@@ -6,14 +6,27 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import '../css/app.css';
-import Vue from 'vue';
-import App from './components/App';
+$("#slide-image").cropper();
 
-// Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
-// import $ from 'jquery';
+function crop(){
+    $("#slide-image").cropper('getCroppedCanvas').toBlob(function (blob){
+        var formData = new FormData();
 
-const app = new Vue({
-    el: '#app',
-    render: h => h(App)
-});
+        formData.append('croppedImage',blob);
+
+        //current slide
+        $.ajax('/'), {
+            method: "POST",
+            data: formData,
+            processData:false,
+            contentType: false,
+            success:function() {
+                console.log('Upload success')
+            },
+            error: function() {
+                console.log('Upload error')
+            }
+        }
+
+    });
+}
