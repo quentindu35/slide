@@ -26,9 +26,5 @@ class ConnexionController extends AbstractController
             'email' => $_POST['user_mail'],
             'mdp' => $_POST['mdp'],
         ];
-        var_dump($data);die();
-        return $this->render('connexion/index.html.twig', [
-            'controller_name' => 'ConnexionController',
-        ]);
     }
 }
