@@ -29,15 +29,15 @@
             {% endfor %}
         {% else %}
             <div>
-                <h1> Voulez vous créer un slide </h1>
-                <input name="slide" type="submit" value="Ajouter un slide">
+                <p> Ajouter une slide </p>
+                {{ form (formSlide) }}
             </div>
         {% endif %}
     {% else %}
-            <div>
-                <h1> Voulez vous créer une présentation </h1>
-                <input name="presentation" type="submit" value="Ajouter une présentation">
-            </div>
+        <div>
+            <p> Ajouter une présentation </p>
+            {{ form (formPresentation) }}
+        </div>
     {% endif %}
 
 {% endblock %}

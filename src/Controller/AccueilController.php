@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Photo;
+use App\Entity\Presentation;
 use App\Form\PhotoType;
+use App\Form\PresentationType;
+use App\Form\SlideType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,12 +21,18 @@ class AccueilController extends AbstractController
      */
     public function index(EntityManagerInterface $em, Request $request)
     {
+        $presentations = $this->getDoctrine()->getRepository(Presentation::class)->findAll();
+
         $entityManager = $this->getDoctrine()->getManager();
         $upload = new Photo();
         $slide = new Slide();
+        $presentation = new Presentation();
         $formSlide = $this->createForm(SlideType::class, $slide);
+        $formPresentation = $this->createForm(PresentationType::class, $presentation);
         $form = $this->createForm(PhotoType::class, $upload);
         $form->handleRequest($request);
+        $formSlide->handleRequest($request);
+        $formPresentation->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $file = $upload->getNom();
             $extention = $file->guessExtension();
@@ -38,8 +47,17 @@ class AccueilController extends AbstractController
             return $this->redirectToRoute('accueil');
         }
         if ($formSlide->isSubmitted() && $formSlide->isValid()) {
-            $slide->setPresentation();
-            $entityManager->persist($upload);
+            $slide->setPresentation(count($presentations));
+            $entityManager->persist($slide);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('accueil');
+        }
+
+        if ($formPresentation->isSubmitted() && $formPresentation->isValid()) {
+            $presentation->setDatedeCreation(new \DateTime());
+            $presentation->setDatedeModification(new \DateTime());
+            $entityManager->persist($presentation);
             $entityManager->flush();
 
             return $this->redirectToRoute('accueil');
@@ -48,12 +66,14 @@ class AccueilController extends AbstractController
         $images =$this->getDoctrine()
             ->getRepository(Photo::class)
             ->findAll();
-        $presentations = $this->getDoctrine()->getRepository(Presentation::class)->findAll();
+
 
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'AccueilController',
             'slides' => $slides,
             'form' => $form->createView(),
+            'formPresentation' => $formPresentation->createView(),
+            'formSlide' => $formSlide->createView(),
             'images' => $images,
             'presentations' => $presentations
         ]);
