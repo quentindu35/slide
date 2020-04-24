@@ -6,26 +6,24 @@
     <link rel="stylesheet" href="{{ asset('css/accueil.css')}}">
 {% endblock %}
 {% block body %}
+    {#
+
     {% if presentations|length != 0 %}
         {% if slides|length != 0 %}
             {% for slide in slides %}
-            <div>
-                <h1> Slide {{ slide.id }} </h1>
-                <p> Ajouter une image à votre slide </p>
-                {{ form (form) }}
-            </div>
-            <div>
-            {% for image in images %}
-            <div id="{{ asset }}"
-            <img style="width: 250px" src="{{ asset('images/' ~ image.getNom ~ image.getExtention) }}">
-            {% endfor %}
-            </div>
-             <div class="main-container">
-                {% if images|length != 0 %}
-                <div id={{ slide.id }} class="img img-1">
-                    <img src="{{ asset('images/' ~ image.getNom ~ image.getExtention) }}"> </img>
+             #}
+                <div>
+                   {#  <h1> Slide {{ slide.id }} </h1> #}
+                    <p> Ajouter une image à votre slide </p>
+                    {{ form (form) }}
                 </div>
-                {% endif %}
+                <div>
+                    {% for image in images %}
+                    <img style="width: 250px" src="{{ asset('images/' ~ image.getNom ~ image.getExtention) }}">
+                    {% endfor %}
+                </div>
+{#
+
             {% endfor %}
         {% else %}
             <div>
@@ -39,7 +37,7 @@
             {{ form (formPresentation) }}
         </div>
     {% endif %}
-
+ #}
 {% endblock %}
 {% block javascripts %}                
     
