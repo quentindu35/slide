@@ -35,8 +35,6 @@ class AccueilController extends AbstractController
             $entityManager->persist($upload);
             $entityManager->flush();
 
-
-
             return $this->redirectToRoute('accueil');
         }
         $slides = $em->getRepository(Slide::class)->findAll();
