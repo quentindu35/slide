@@ -14,7 +14,6 @@
             </div>
             <div>
             {% for image in images %}
-            <div id="{{ asset}}"
             <img style="width: 250px" src="{{ asset('images/' ~ image.getnom ~ image.getExtention) }}">
             {% endfor %}
             <img style="width: 250px" src="{{ asset('images/IMG_2178.jpg') }}">

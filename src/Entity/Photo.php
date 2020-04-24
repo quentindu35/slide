@@ -58,12 +58,12 @@ class Photo
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getNom()
     {
         return $this->Nom;
     }
 
-    public function setNom(string $Nom): self
+    public function setNom($Nom): self
     {
         $this->Nom = $Nom;
 
