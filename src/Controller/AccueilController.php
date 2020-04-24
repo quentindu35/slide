@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Photo;
 use App\Form\PhotoType;
-use App\Form\SlideType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -49,11 +48,14 @@ class AccueilController extends AbstractController
         $images =$this->getDoctrine()
             ->getRepository(Photo::class)
             ->findAll();
+        $presentations = $this->getDoctrine()->getRepository(Presentation::class)->findAll();
+
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'AccueilController',
             'slides' => $slides,
             'form' => $form->createView(),
             'images' => $images,
+            'presentations' => $presentations
         ]);
     }
 }
