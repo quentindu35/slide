@@ -1,29 +1,47 @@
 {% extends 'header.html.twig' %}
 
 {% block title %} Welcome !{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/accueil.css')}}">
+{% endblock %}
 {% block body %}
- <div class="col-lg-6 col-md-12">
-    <div id="carousel-v" class="carousel slide mt-3 mb-2" data-ride="carousel">
-        <ol class="carousel-indicators">
+        {% if slides|length != 0 %}
             {% for slide in slides %}
-                <li data-target="#carousel-v" data-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %} class="active" {% endif %}></li>
-            {% endfor %}
-        </ol>
-    <div class="carousel-inner">
-        {% for slide in slides %}
-            <div class="carousel-item {% if loop.index0 == 0 %} active {% endif %}">
-                <iframe src="{{ slide.image }}" allowfullscreen></iframe>
+            <div>
+                <h1>coucou</h1>
+                {{ form (form) }}
             </div>
-        {% endfor %}
-    </div>
-        <a class="carousel-control-prev" href="#carousel-v" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#carousel-v" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </a>
-    </div>
-</div>
+            <div>
+            {% for image in images %}
+            <div id="{{ asset}}"
+            <img style="width: 250px" src="{{ asset('images/' ~ image.getnom ~ image.getExtention) }}">
+            {% endfor %}
+            <img style="width: 250px" src="{{ asset('images/IMG_2178.jpg') }}">
+            </div>
+             <div class="main-container">
+                {#<div id={{ slide.id }} class="img img-1">
+                    <img src={{ photo.src }}> </img>
+                </div> #}
+
+                <div class="title title-1" >Slide 1</div>
+                <div id="slide1" class="img img-1">
+                    <img src="{{ asset('images/slide2.png') }}"> </img>
+                </div>
+                <div class="img img-2"></div>
+                <div class="img img-3"></div>
+                <div class="img img-4"></div>
+                <div class="img img-5"></div>
+
+                <div class="title title-2">Slide 2</div>
+                <div class="title title-3">Slide 3</div>
+                <div class="title title-4">Slide 4</div>
+                <div class="title title-5">Slide 5</div>
+            </div>
+            {% endfor %}
+        {% endif %}
+{% endblock %}
+{% block javascripts %}
     <div>
         <h1>coucou</h1>
         {{ form (form) }}

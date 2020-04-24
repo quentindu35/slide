@@ -13,8 +13,6 @@ use App\Entity\Slide;
 class AccueilController extends AbstractController
 {
     
-
-
     /**
      * @Route("/accueil", name="accueil")
      */
@@ -38,14 +36,14 @@ class AccueilController extends AbstractController
             return $this->redirectToRoute('accueil');
         }
         $slides = $em->getRepository(Slide::class)->findAll();
-        $image =$this->getDoctrine()
+        $images =$this->getDoctrine()
             ->getRepository(Photo::class)
             ->findAll();
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'AccueilController',
             'slides' => $slides,
             'form' => $form->createView(),
-            'images' => $image,
+            'images' => $images,
         ]);
     }
 }
