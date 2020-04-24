@@ -28,7 +28,7 @@ class AccueilController extends AbstractController
             $file = $upload->getNom();
             $extention = $file->guessExtension();
             $fileName = md5(uniqid());
-            $file->move($this->getParameter('upload_directory'), $fileName);
+            $file->move($this->getParameter('upload_directory'), $fileName.'.'.$extention);
             $upload->setNom($fileName);
             $upload->setExtention(".".$extention);
             $upload->setDatedAjout(new \DateTime());
