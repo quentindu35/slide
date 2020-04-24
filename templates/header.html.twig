@@ -5,9 +5,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name= "language" content= "fr-FR" />
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         {% block stylesheets %}
             <link  href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" rel="stylesheet">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
         {% endblock %}
     </head>
     <body>
@@ -29,15 +30,14 @@
                 <a class="nav-link disabled" href="/connexion">Connexion</a>
             </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
         </div>
         </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
+            <script src="{{ asset('js/jquery-3.4.1.min.js')}}"></script>
+            <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+            <script src="{{ asset('js/bootstrap.bundle.min.js')}}"></script>
         {% endblock %}
     </body>
 </html>

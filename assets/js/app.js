@@ -7,6 +7,10 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 $("#slide-image").cropper();
+$('.carousel').carousel({
+    interval: 2000
+  })
+
 
 function crop(){
     $("#slide-image").cropper('getCroppedCanvas').toBlob(function (blob){
