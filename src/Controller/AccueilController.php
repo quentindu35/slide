@@ -33,7 +33,7 @@ class AccueilController extends AbstractController
             $entityManager->persist($upload);
             $entityManager->flush();
 
-
+        if ($slide)        
 
             return $this->redirectToRoute('accueil');
         }
@@ -41,11 +41,14 @@ class AccueilController extends AbstractController
         $images =$this->getDoctrine()
             ->getRepository(Photo::class)
             ->findAll();
+        $presentations = $this->getDoctrine()->getRepository(Presentation::class)->findAll();
+
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'AccueilController',
             'slides' => $slides,
             'form' => $form->createView(),
             'images' => $images,
+            'presentations' => $presentations
         ]);
     }
 }

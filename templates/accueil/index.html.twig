@@ -6,40 +6,40 @@
     <link rel="stylesheet" href="{{ asset('css/accueil.css')}}">
 {% endblock %}
 {% block body %}
+    {% if presentations|length != 0 %}
         {% if slides|length != 0 %}
             {% for slide in slides %}
             <div>
-                <h1>coucou</h1>
+                <h1> Slide {{ slide.id }} </h1>
+                <p> Ajouter une image à votre slide </p>
                 {{ form (form) }}
             </div>
             <div>
             {% for image in images %}
-            <div id="{{ asset}}"
-            <img style="width: 250px" src="{{ asset('images/' ~ image.getnom ~ image.getExtention) }}">
+            <div id="{{ asset }}"
+            <img style="width: 250px" src="{{ asset('images/' ~ image.getNom ~ image.getExtention) }}">
             {% endfor %}
-            <img style="width: 250px" src="{{ asset('images/IMG_2178.jpg') }}">
             </div>
              <div class="main-container">
-                {#<div id={{ slide.id }} class="img img-1">
-                    <img src={{ photo.src }}> </img>
-                </div> #}
-                
-                <div class="title title-1" >Slide 1</div>
-                <div id="slide1" class="img img-1">
-                    <img src="{{ asset('images/slide2.png') }}"> </img>
+                {% if images|length != 0 %}
+                <div id={{ slide.id }} class="img img-1">
+                    <img src="{{ asset('images/' ~ image.getNom ~ image.getExtention) }}"> </img>
                 </div>
-                <div class="img img-2"></div>
-                <div class="img img-3"></div>
-                <div class="img img-4"></div>
-                <div class="img img-5"></div>
-                
-                <div class="title title-2">Slide 2</div>
-                <div class="title title-3">Slide 3</div>
-                <div class="title title-4">Slide 4</div>
-                <div class="title title-5">Slide 5</div>
-            </div>
+                {% endif %}
             {% endfor %}    
-        {% endif %} 
+        {% else %}
+            <div>
+                <h1> Voulez vous créer un slide </h1>
+                <input name="slide" type="submit" value="Ajouter un slide">
+            </div>
+        {% endif %}
+    {% else %}
+            <div>
+                <h1> Voulez vous créer une présentation </h1>
+                <input name="presentation" type="submit" value="Ajouter une présentation">
+            </div>
+    {% endif %}
+
 {% endblock %}
 {% block javascripts %}                
     
