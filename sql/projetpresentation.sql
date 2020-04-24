@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 23 avr. 2020 à 08:57
+-- Généré le :  ven. 24 avr. 2020 à 14:45
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.4.5
 
@@ -35,17 +35,6 @@ CREATE TABLE IF NOT EXISTS `migration_versions` (
   PRIMARY KEY (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Déchargement des données de la table `migration_versions`
---
-
-INSERT INTO `migration_versions` (`version`, `executed_at`) VALUES
-('20200423080006', '2020-04-23 08:00:19'),
-('20200423080620', '2020-04-23 08:06:39'),
-('20200423081559', '2020-04-23 08:16:07'),
-('20200423082040', '2020-04-23 08:21:06'),
-('20200423084101', '2020-04-23 08:41:09');
-
 -- --------------------------------------------------------
 
 --
@@ -56,10 +45,10 @@ DROP TABLE IF EXISTS `photo`;
 CREATE TABLE IF NOT EXISTS `photo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `extention` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `dated_ajout` datetime NOT NULL,
-  `horizontal` int(11) NOT NULL,
-  `vertical` int(11) NOT NULL,
+  `extention` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dated_ajout` datetime DEFAULT NULL,
+  `horizontal` int(11) DEFAULT NULL,
+  `vertical` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 

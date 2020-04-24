@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Photo;
 use App\Form\PhotoType;
+use App\Form\SlideType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,6 +21,8 @@ class AccueilController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $upload = new Photo();
+        $slide = new Slide();
+        $formSlide = $this->createForm(SlideType::class, $slide);
         $form = $this->createForm(PhotoType::class, $upload);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -30,6 +33,13 @@ class AccueilController extends AbstractController
             $upload->setNom($fileName);
             $upload->setExtention(".".$extention);
             $upload->setDatedAjout(new \DateTime());
+            $entityManager->persist($upload);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('accueil');
+        }
+        if ($formSlide->isSubmitted() && $formSlide->isValid()) {
+            $slide->setPresentation();
             $entityManager->persist($upload);
             $entityManager->flush();
 
