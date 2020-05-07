@@ -23,7 +23,22 @@ Etape 3(bis): Faire attention au .env pour faire correspondre avec la base SQL
 DATABASE_URL=mysql://root:@127.0.0.1:3306/projetPresentation?serverVersion=5.7.24
 ```
 
-Etape 4: Faire tourner le serveur 
+Etape 4 : Inclure les dépendances du projet 
+
+Le projet utilise bootstrap et d'autres dépendances externes, il faut donc mettre à jour le composer 
+``` 
+composer update
+```
+
+Et également 
+```
+yarn install
+
+yarn encore dev
+```
+
+Etape 5: Faire tourner le serveur 
+
 ```
 # Avec le client
 symfony server:start
